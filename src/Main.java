@@ -10,7 +10,8 @@ public class Main {
         Connection _Connect = DriverManager.getConnection(helper.url, helper.Username, helper.Password);
         try {
             ExecuteAndReadData(_Connect);
-            InsertData();
+           // InsertData();
+            UpdateData();
         } catch (Exception ERR) {
             System.out.println(ERR);
         } finally {
@@ -23,6 +24,16 @@ public class Main {
     private static void InsertData( ) {
         try {
             _State.executeUpdate("insert  into city(Id,Name,CountryCode,District,Info) values(12222,'duzce','tur','duzce','5000') ");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private static void UpdateData( ) {
+        try {
+            _State.executeUpdate("update city set Info ='2000' where  Id = 12222");
+            System.out.println("data update oldu");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
