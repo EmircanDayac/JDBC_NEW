@@ -11,7 +11,8 @@ public class Main {
         try {
             ExecuteAndReadData(_Connect);
            // InsertData();
-            UpdateData();
+         //   UpdateData();
+            DeleteData();
         } catch (Exception ERR) {
             System.out.println(ERR);
         } finally {
@@ -30,6 +31,16 @@ public class Main {
 
     }
 
+
+    private static void DeleteData( ) {
+        try {
+            _State.executeUpdate( "delete from city where Id = 12222");
+            System.out.println("data delete ");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
     private static void UpdateData( ) {
         try {
             _State.executeUpdate("update city set Info ='2000' where  Id = 12222");
